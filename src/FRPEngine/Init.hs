@@ -1,4 +1,4 @@
-module Main where
+module FRPEngine.Init where
 
 import Control.Concurrent
   ( newMVar,

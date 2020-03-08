@@ -34,6 +34,7 @@ library
         FRPEngine.Input.Types
         FRPEngine.Input.Interpreter
         FRPEngine.Input.Input
+        FRPEngine.Init
 
     build-depends:
                   base >=0
