@@ -1,10 +1,11 @@
 cabal-version: >= 2
 name: FRPEngine
 version: 0.1.0.0
--- license: BSD3
 maintainer: s.walinder@gmail.com
 author: Sebastian Wålinder
 build-type: Simple
+extra-source-files:
+    CHANGELOG.md
 
 library
     hs-source-dirs: src
