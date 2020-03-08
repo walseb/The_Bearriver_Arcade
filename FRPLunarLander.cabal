@@ -20,7 +20,6 @@ library
 
     exposed-modules:
         FRPEngine.Collision.Internal.GJK
-
         FRPEngine.Collision.Util
         FRPEngine.Collision.Types
 
@@ -35,8 +34,6 @@ library
         FRPEngine.Input.Types
         FRPEngine.Input.Interpreter
         FRPEngine.Input.Input
-
-        FRPEngine.Ship
 
     build-depends:
                   base >=0

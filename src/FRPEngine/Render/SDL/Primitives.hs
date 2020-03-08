@@ -10,15 +10,12 @@ import SDL.Vect
 import SDL.Video.Renderer
 import Data.Vector.Storable
 
-import FRPEngine.Collision.Util (objToRect)
 import Control.Applicative
 import Control.Lens
 import Control.Monad
 import Data.Text (pack)
-import Linear
 import qualified SDL as S
 import qualified SDL.Font as F
-import qualified SDL.Vect as SV
 import FRPEngine.Types
 
 -- Render the sprite at the given coordinates.
@@ -97,7 +94,7 @@ renderObj deltaPos res zoomLevel getSprite renderFromCenter obj =
         -- Always rotate around center
         Nothing
         spr
-        (if renderFromCenter then (pos - (negateYAxis (size / 2))) else pos)
+        (if renderFromCenter then pos - (negateYAxis (size / 2)) else pos)
         size
         theta
     negateYAxis :: (Num a) => V2 a -> V2 a
