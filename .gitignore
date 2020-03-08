@@ -1,19 +1,19 @@
 /*
 /*/
 
-!CHANGELOG.md
-!Docs
-!.envrc-old
-!.envrc
-!/.git/
-!.gitignore
 !LICENSE
-!ReactiveGame.cabal
-!Setup.hs
+!CHANGELOG.md
+
+!.envrc
+!.gitignore
+
+!/docs
 !/src/
 !/data/
-!testSprite.png
-!guide
+
+!*.cabal
+!cabal.project
+!Setup.hs
 
 !shell.nix
 !default.nix

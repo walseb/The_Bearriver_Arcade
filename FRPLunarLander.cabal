@@ -1,0 +1,59 @@
+cabal-version: >= 2
+name: FRPEngine
+version: 0.1.0.0
+-- license: BSD3
+maintainer: s.walinder@gmail.com
+author: Sebastian Wålinder
+build-type: Simple
+
+library
+    hs-source-dirs: src
+    default-language: Haskell2010
+    -- ghc-options: -Weverything -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-implicit-prelude -Wmissing-home-modules -Widentities -Wredundant-constraints -Wpartial-fields -Wno-missing-exported-signatures -Wno-missing-export-lists -Wno-missing-import-lists -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wmonomorphism-restriction -Wall-missed-specialisations -Wcpp-undef -Wno-missing-signatures
+    ghc-options: -w
+    other-modules:
+        -- Collision.AABB
+        FRPEngine.Collision.Internal.GJKInternal.Support
+
+        FRPEngine.Input.Internal
+
+    exposed-modules:
+        FRPEngine.Collision.Internal.GJK
+
+        FRPEngine.Collision.Util
+        FRPEngine.Collision.Types
+
+        FRPEngine.Render.SDL.Primitives
+
+        FRPEngine.YampaUtils.Types
+
+        FRPEngine.Physics
+
+        FRPEngine.Types
+
+        FRPEngine.Input.Types
+        FRPEngine.Input.Interpreter
+        FRPEngine.Input.Input
+
+        FRPEngine.Ship
+
+    build-depends:
+                  base >=0
+                , extra
+                , lens
+                , linear
+
+                , sdl2
+                , sdl2-image
+                , sdl2-sprite
+                , sdl2-ttf
+                -- SDL TFF dependency
+                , text
+
+                -- SDL draw lines dependency
+                , vector
+
+                , bearriver
+                , template-haskell
+                , gjk
+                , aeson-tiled
