@@ -37,16 +37,21 @@ data InputState
 makeLenses ''InputState
 makePrisms ''InputState
 
-keybinds =
+defaultKeybinds =
   InputState
     { _zoom =
         -- (ScrollState 0),
       (ButtonAxisState (V2 KeycodeB KeycodeO) (V2 False False)),
       _movement =
         DirectionalInput
+          -- (ButtonState KeycodeUp False)
+          -- (ButtonState KeycodeDown False)
+          -- (ButtonState KeycodeLeft False)
+          -- (ButtonState KeycodeRight False)
           (ButtonState KeycodeM False)
           (ButtonState KeycodeT False)
           (ButtonState KeycodeS False)
           (ButtonState KeycodeN False),
+      -- _quit = ButtonState KeycodeEscape False
       _quit = ButtonState KeycodeQ False
     }
