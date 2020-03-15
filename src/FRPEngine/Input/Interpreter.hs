@@ -23,9 +23,9 @@ vectorizeMovement _ = error "Trying to vectorize unsupported input"
 
 accumCount :: Int -> KeyState -> Int
 accumCount s (ButtonAxisState _ (V2 True _)) = s + 1
-accumCount s (ButtonAxisState _ (V2 _ True)) = s -1
+accumCount s (ButtonAxisState _ (V2 _ True)) = s - 1
 accumCount s (ButtonAxisState _ _) = s 
-accumCount s (ScrollState scrollDist) = s + scrollDist
+accumCount s (ScrollState scrollDist) = s - scrollDist
 
 accumLimit :: V2 Int -> Int -> KeyState -> Int
 accumLimit (V2 limMax limMin) s key = limit $ accumCount s key
