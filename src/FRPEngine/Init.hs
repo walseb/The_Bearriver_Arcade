@@ -9,15 +9,15 @@ import FRP.Yampa
 import Linear
 import qualified SDL as S
 
-initSDL :: IO (S.Renderer, S.Window)
-initSDL = do
+initSDL :: String -> IO (S.Renderer, S.Window)
+initSDL windowName = do
   S.initializeAll
-  window <- S.createWindow (fromString "My SDL Application") (S.WindowConfig True False False S.Maximized S.NoGraphicsContext S.Wherever False (V2 800 600) True)
+  window <- S.createWindow (fromString windowName) (S.WindowConfig True False False S.Maximized S.NoGraphicsContext S.Wherever False (V2 800 600) True)
   renderer <- S.createRenderer window (-1) S.defaultRenderer
   return (renderer, window)
 
-runSDL loadResources run = do
-  (renderer, window) <- initSDL
+runSDL windowName loadResources run = do
+  (renderer, window) <- initSDL windowName
   senseInput <- getSenseInput
 
   resources <- loadResources renderer
