@@ -11,7 +11,7 @@ library
     hs-source-dirs: src
     default-language: Haskell2010
     -- ghc-options: -Weverything -Wincomplete-uni-patterns -Wincomplete-record-updates -Wno-implicit-prelude -Wmissing-home-modules -Widentities -Wredundant-constraints -Wpartial-fields -Wno-missing-exported-signatures -Wno-missing-export-lists -Wno-missing-import-lists -Wno-unsafe -Wno-safe -Wno-missing-local-signatures -Wmonomorphism-restriction -Wall-missed-specialisations -Wcpp-undef -Wno-missing-signatures
-    ghc-options: -w
+    ghc-options: -w -Wmissing-home-modules
     other-modules:
         -- Collision.AABB
         FRPEngine.Collision.Internal.GJKInternal.Support
