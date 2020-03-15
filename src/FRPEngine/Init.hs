@@ -34,8 +34,3 @@ runSDL loadResources run = do
             events <- Event <$> S.pollEvents
             return (dt, Just events)
       pure senseInput
-
--- main =
---   runSDL
---     (\rend -> getResources rend)
---     (\renderer senseInput resources -> reactimate (return NoEvent) senseInput (\_ -> render renderer resources) (update initialGame))

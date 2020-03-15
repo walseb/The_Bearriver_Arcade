@@ -1,6 +1,9 @@
 {-# LANGUAGE Arrows #-}
 {-# LANGUAGE TemplateHaskell #-}
 
+-- This prevents a space memory leak from happening
+{-# LANGUAGE Strict #-}
+
 module FRPEngine.Input.Types where
 
 import Control.Lens

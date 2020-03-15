@@ -103,6 +103,13 @@ renderObj deltaPos res zoomLevel getSprite renderFromCenter obj =
 
 renderText renderer font text pos = do
   fontSurface <- F.solid font (V4 255 255 255 255) (pack text)
-  font <- S.createTextureFromSurface renderer fontSurface
-  S.copy renderer font Nothing (Just pos)
+  fontTex <- S.createTextureFromSurface renderer fontSurface
+
+  -- Destroy the surface after the texture is created
+  S.freeSurface fontSurface
+
+  S.copy renderer fontTex Nothing (Just pos)
+
+  -- Destroy the texture after it's rendered
+  S.destroyTexture fontTex
 {-# INLINE renderText #-}
