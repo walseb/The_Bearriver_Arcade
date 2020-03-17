@@ -1,7 +1,7 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module FRPEngine.Collision.Util (moveAlongAxis, objToRect, degToRad, rotateAroundAxis) where
+module FRPEngine.Collision.Util where
 
 import Control.Lens
 import Linear
@@ -41,3 +41,12 @@ moveAlongAxis (V2 x y) dist theta =
   where
     x1 = x + sin theta * dist
     y1 = y + cos theta * dist
+
+ptsApplyObject :: CollObj a -> CollObj a
+ptsApplyObject (CollObj coll obj) =
+   CollObj
+      ((fmap . fmap) (ptsTransform obj) coll)
+      obj
+  where
+    ptsTransform :: (RealFloat a) => Object a w -> V2 a -> V2 a
+    ptsTransform (Object pos size rot _) pt = rotateAroundAxis (degToRad rot) (pos + (size * pt)) pos
