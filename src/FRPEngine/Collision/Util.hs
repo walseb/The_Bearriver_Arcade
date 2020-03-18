@@ -42,7 +42,7 @@ moveAlongAxis (V2 x y) dist theta =
     x1 = x + sin theta * dist
     y1 = y + cos theta * dist
 
-ptsApplyObject :: CollObj a -> CollObj a
+ptsApplyObject :: CollObj Double a -> CollObj Double a
 ptsApplyObject (CollObj coll obj) =
    CollObj
       ((fmap . fmap) (ptsTransform obj) coll)

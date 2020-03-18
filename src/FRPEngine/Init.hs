@@ -19,18 +19,24 @@ initSDL windowName = do
 runSDL windowName loadResources run = do
   (renderer, window) <- initSDL windowName
   senseInput <- getSenseInput
-
   resources <- loadResources renderer
   _ <- run renderer senseInput resources
-
   S.destroyRenderer renderer
   S.destroyWindow window
   where
     getSenseInput = do
-      lastInteraction <- newMVar =<< S.time
+      oldTime <- S.time
+      lastInteraction <- newMVar oldTime
       let senseInput _canBlock = do
             currentTime <- S.time
             dt <- (currentTime -) <$> swapMVar lastInteraction currentTime
             events <- Event <$> S.pollEvents
-            return (dt, Just events)
+            return
+              -- Prevent delta time from getting higher than frametime for 60 fps
+              ( ( case dt > 0.016 of
+                    True -> 0.016
+                    False -> dt
+                ),
+                Just events
+              )
       pure senseInput

@@ -1,4 +1,4 @@
-cabal-version: >= 2
+cabal-version: >=1.10
 name: FRPEngine
 version: 0.1.0.0
 maintainer: s.walinder@gmail.com

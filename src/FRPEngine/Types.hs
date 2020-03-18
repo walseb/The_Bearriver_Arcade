@@ -17,10 +17,10 @@ data Object a spriteSelect
 
 makeLenses ''Object
 
-data CollObj spriteSelect
-  =  CollObj
+data CollObj a spriteSelect
+  = CollObj
       { _coll :: [[Pt' Double]],
-        _tObj :: Object Double spriteSelect
+        _obj :: Object a spriteSelect
       }
   deriving (Show)
 
