@@ -46,7 +46,7 @@ renderEx' rend rotCenter spr _pos size theta renderFromCenter zoom _camPos =
     (V2 False False)
   where
     camPos = negateYAxis _camPos
-    -- SDL renders from top left.. This offsets all game state so that it acts as if bottom left rendering was used
+    -- SDL renders from top left. This offsets all game state so that it acts as if bottom left rendering was used
     pos =
       negateYAxis
         ( _pos
