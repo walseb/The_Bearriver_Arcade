@@ -6,21 +6,22 @@ import FRPEngine.Collision.Types
 import Control.Lens
 import Linear
 
-data Object a spriteSelect
-  = Object
+data Obj a spriteSelect
+  = Obj
       { _pos :: V2 a,
         _size :: V2 a,
         _rot :: a,
-        _spr :: spriteSelect
+        _spr :: spriteSelect,
+        _centerRender :: Bool
       }
   deriving (Show)
 
-makeLenses ''Object
+makeLenses ''Obj
 
 data CollObj a spriteSelect
   = CollObj
-      { _coll :: [[Pt' Double]],
-        _obj :: Object a spriteSelect
+      { _coll :: [[Pt' a]],
+        _obj :: Obj a spriteSelect
       }
   deriving (Show)
 

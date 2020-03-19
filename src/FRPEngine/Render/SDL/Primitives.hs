@@ -67,8 +67,8 @@ renderEx' rend rotCenter spr _pos size theta renderFromCenter zoom _camPos =
 {-# INLINE renderEx' #-}
 
 -- Objects that don't render from center instead render from bottom left
-renderObj :: (RealFrac a) => V2 a -> (Object a w -> S.Texture) -> a -> S.Renderer -> Bool -> Object a w -> IO ()
-renderObj camPos res zoomLevel renderer renderFromCenter obj =
+renderObj :: (RealFrac a) => V2 a -> (Obj a w -> S.Texture) -> a -> S.Renderer -> Obj a w -> IO ()
+renderObj camPos res zoomLevel renderer obj =
   renderEx'
     renderer
     Nothing
@@ -76,7 +76,7 @@ renderObj camPos res zoomLevel renderer renderFromCenter obj =
     (obj ^. pos)
     (obj ^. size)
     (obj ^. rot)
-    renderFromCenter
+    (obj ^. centerRender)
     zoomLevel
     camPos
 {-# INLINE renderObj #-}
