@@ -3,7 +3,6 @@
 
 module FRPEngine.Collision.Util where
 
-import Control.Lens
 import Linear
 import FRPEngine.Types
 import FRPEngine.Collision.Types

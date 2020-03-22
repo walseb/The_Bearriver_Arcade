@@ -14,12 +14,12 @@ library
     ghc-options: -w -Wmissing-home-modules
     other-modules:
         -- Collision.AABB
-        FRPEngine.Collision.Internal.GJKInternal.Support
+        FRPEngine.Collision.GJKInternal.Support
 
         FRPEngine.Input.Internal
 
     exposed-modules:
-        FRPEngine.Collision.Internal.GJK
+        FRPEngine.Collision.GJK
         FRPEngine.Collision.Util
         FRPEngine.Collision.Types
 

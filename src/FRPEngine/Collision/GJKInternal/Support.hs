@@ -1,4 +1,4 @@
-module FRPEngine.Collision.Internal.GJKInternal.Support where
+module FRPEngine.Collision.GJKInternal.Support where
 
 import Data.Maybe (fromMaybe)
 import GJK.Collision
