@@ -28,8 +28,8 @@ initSDL windowName windowConfig = do
 
 runSDL debug windowMode windowName loadResources run = do
   (renderer, window) <- initSDL windowName windowMode
-  sense <- getSense
   resources <- loadResources renderer
+  sense <- getSense
   _ <- run renderer sense resources
   S.destroyRenderer renderer
   S.destroyWindow window

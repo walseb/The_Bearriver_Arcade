@@ -5,5 +5,5 @@ import FRPEngine.Input.Internal
 import FRPEngine.Input.Types
 
 inputStateUpdate :: InputState -> [SDL.Event] -> InputState
-inputStateUpdate input events =
-  foldr updateKeyInInputState input (eventToCustomEventPayload events)
+inputStateUpdate inputState events =
+  foldr updateKeyInInputState inputState (eventToCustomEventPayload events)
