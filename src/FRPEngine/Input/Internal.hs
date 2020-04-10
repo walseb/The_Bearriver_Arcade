@@ -26,24 +26,28 @@ fromMotion Pressed = True
 fromMotion Released = False
 
 -- This gets
-replaceKeystate :: CustomEventPayload -> KeyState -> KeyState
+replaceKeystate :: KeyState -> CustomEventPayload -> KeyState
 -- ButtonState
-replaceKeystate (SDLEvent (KeyboardEvent (KeyboardEventData _ pressed _ keysym))) a@(ButtonState key _) = if keysymKeycode keysym == key then ButtonState (keysymKeycode keysym) (fromMotion pressed) else a
+replaceKeystate a@(ButtonState key _) (SDLEvent (KeyboardEvent (KeyboardEventData _ pressed _ keysym))) =
+  if keysymKeycode keysym == key then ButtonState (keysymKeycode keysym) (fromMotion pressed) else a
 -- ButtonAxisState
-replaceKeystate (SDLEvent (KeyboardEvent (KeyboardEventData _ press0 _ keysym))) a@(ButtonAxisState key press)
+replaceKeystate a@(ButtonAxisState key press) (SDLEvent (KeyboardEvent (KeyboardEventData _ press0 _ keysym)))
   | keysymKeycode keysym == (key ^. _x) = ButtonAxisState key (V2 (press ^. _x) (fromMotion press0))
   | keysymKeycode keysym == (key ^. _y) = ButtonAxisState key (V2 (fromMotion press0) (press ^. _y))
   | otherwise = a
 -- ScrollState
-replaceKeystate (SDLEvent (MouseWheelEvent (MouseWheelEventData _ _ scrollDist ScrollNormal))) (ScrollState oldScroll) = ScrollState $ oldScroll + fromIntegral (scrollDist ^. _y)
-replaceKeystate (SDLEvent (MouseWheelEvent (MouseWheelEventData _ _ scrollDist ScrollFlipped))) (ScrollState oldScroll) = ScrollState $ oldScroll + (- (fromIntegral (scrollDist ^. _y)))
-replaceKeystate ScrollStopped (ScrollState _) = ScrollState 0
+replaceKeystate (ScrollState oldScroll) (SDLEvent (MouseWheelEvent (MouseWheelEventData _ _ scrollDist ScrollNormal))) =
+  ScrollState $ oldScroll + fromIntegral (scrollDist ^. _y)
+replaceKeystate (ScrollState oldScroll) (SDLEvent (MouseWheelEvent (MouseWheelEventData _ _ scrollDist ScrollFlipped))) =
+  ScrollState $ oldScroll + (- (fromIntegral (scrollDist ^. _y)))
+replaceKeystate (ScrollState _) ScrollStopped =
+  ScrollState 0
 -- If keys aren't matched or unknown don't do anything to them
-replaceKeystate _ a = a
+replaceKeystate a _ = a
 
 -- We create a new ScrollState every update because there isn't a SDL event for "I have stopped scrolling now"
-updateKeyInInputState :: CustomEventPayload -> InputState-> InputState
-updateKeyInInputState event (InputState b1 (DirectionalInput b2 b3 b4 b5) bQuit) =
+updateKeyInInputState :: InputState -> CustomEventPayload -> InputState
+updateKeyInInputState (InputState b1 (DirectionalInput b2 b3 b4 b5) bQuit) event =
   InputState
     (rk b1)
     ( DirectionalInput
@@ -54,4 +58,4 @@ updateKeyInInputState event (InputState b1 (DirectionalInput b2 b3 b4 b5) bQuit)
     )
     (rk bQuit)
   where
-    rk = replaceKeystate event
+    rk = (flip replaceKeystate) event

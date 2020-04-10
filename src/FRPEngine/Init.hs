@@ -7,7 +7,7 @@ import Control.Concurrent
     threadDelay,
   )
 import Data.String (fromString)
-import FRP.Yampa
+import qualified FRP.Yampa as Yampa
 import Linear
 import qualified SDL as S
 
@@ -49,8 +49,11 @@ runSDL debug windowMode windowName loadResources run = do
             (newTime -) <$> readMVar lastTime
       pure (setDt, readDt)
     -- Events
-    getEvents =
-      Event <$> S.pollEvents
+    getEvents = do
+      events <- S.pollEvents
+      pure (case events of
+              [] -> Yampa.NoEvent
+              _ -> Yampa.Event events)
     -- Debug
     oneSecondTimer = do
       delta <- newMVar 0
