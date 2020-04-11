@@ -1,6 +1,6 @@
 cabal-version: >=1.10
 name: FRPEngine
-version: 0.1.0.0
+version: 0.2.0.0
 maintainer: s.walinder@gmail.com
 author: Sebastian Wålinder
 build-type: Simple
@@ -53,3 +53,7 @@ library
                 , bearriver
                 , template-haskell
                 , gjk
+
+                -- For hotloading
+                , aeson
+                , bytestring
