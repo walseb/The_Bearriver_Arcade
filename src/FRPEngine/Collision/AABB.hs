@@ -1,4 +1,4 @@
-module Collision.AABB
+module FRPEngine.Collision.AABB
   ( collisionAABBCheck,
   )
 where

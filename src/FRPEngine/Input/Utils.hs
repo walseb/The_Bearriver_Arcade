@@ -1,4 +1,4 @@
-module FRPEngine.Input.Interpreter where
+module FRPEngine.Input.Utils where
 
 import FRPEngine.Input.Types
 import Linear
@@ -6,10 +6,10 @@ import Linear
 vectorizeMovement :: (RealFloat a) => DirectionalInput -> V2 a
 vectorizeMovement
   ( DirectionalInput
-      (ButtonState _ a0)
-      (ButtonState _ a1)
-      (ButtonState _ a2)
-      (ButtonState _ a3)
+      (ButtonState _ a0 _)
+      (ButtonState _ a1 _)
+      (ButtonState _ a2 _)
+      (ButtonState _ a3 _)
     ) =
     V2
       -- Horizontal
@@ -24,7 +24,7 @@ vectorizeMovement _ = error "Trying to vectorize unsupported input"
 accumCount :: Int -> KeyState -> Int
 accumCount s (ButtonAxisState _ (V2 True _)) = s + 1
 accumCount s (ButtonAxisState _ (V2 _ True)) = s - 1
-accumCount s (ButtonAxisState _ _) = s 
+accumCount s (ButtonAxisState _ _) = s
 accumCount s (ScrollState scrollDist) = s - scrollDist
 
 accumLimit :: V2 Int -> Int -> KeyState -> Int

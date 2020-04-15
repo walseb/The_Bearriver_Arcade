@@ -3,9 +3,9 @@
 
 module FRPEngine.Collision.Util where
 
-import Linear
-import FRPEngine.Types
 import FRPEngine.Collision.Types
+import FRPEngine.Types
+import Linear
 
 -- Takes rad as rot
 rotateAroundAxis :: (RealFloat a) => a -> V2 a -> V2 a -> V2 a
@@ -29,8 +29,8 @@ moveAlongAxis (V2 x y) dist theta =
     y1 = y + cos theta * dist
 
 getCollisionPointsPos :: (RealFloat a) => CollObj a b -> [[Pt' a]]
-getCollisionPointsPos (CollObj coll (Obj pos size rot _ rotCenter)) =
-    (fmap . fmap) (\pt -> rotateAroundAxis (- (degToRad rot)) ((pos + (size * pt)) - centerOffset) pos) coll
+getCollisionPointsPos (CollObj coll (Obj pos _ rot size _ rotCenter)) =
+  (fmap . fmap) (\pt -> rotateAroundAxis (- (degToRad rot)) ((pos + (size * pt)) - centerOffset) pos) coll
   where
     centerOffset =
       case rotCenter of

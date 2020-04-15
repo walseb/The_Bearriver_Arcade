@@ -6,13 +6,13 @@ import Control.Concurrent
     swapMVar,
     threadDelay,
   )
+import Data.Aeson
+import Data.ByteString as B
+import Data.ByteString.Lazy as BL
 import Data.String (fromString)
 import qualified FRP.Yampa as Yampa
 import Linear
 import qualified SDL as S
-import Data.ByteString as B
-import Data.ByteString.Lazy as BL
-import Data.Aeson
 
 frameCap :: Double
 frameCap = 1 / 200
@@ -36,7 +36,6 @@ runSDL debug windowMode windowName loadResources run = do
   (renderer, window) <- initSDL windowName windowMode
   resources <- loadResources renderer
   sense <- getSense
-
   -- TODO Create file if there is none so error doesn't occur. Also error management. Lazy bytestring exception management
   -- Load game state
   loadedGameState <- eitherDecodeStrict <$> B.readFile gameStateDir
@@ -44,14 +43,11 @@ runSDL debug windowMode windowName loadResources run = do
         case loadedGameState of
           Left err -> seq (Prelude.putStrLn ("Game state load error: " ++ err)) Nothing
           Right res -> Just res
-
   -- Run FRP network
   savedGameState <- run loadedGameState' renderer sense resources
-
   -- Save game state
   let s = encode savedGameState
   BL.writeFile gameStateDir s
-
   S.destroyRenderer renderer
   S.destroyWindow window
   where
@@ -72,9 +68,7 @@ runSDL debug windowMode windowName loadResources run = do
     -- Events
     getEvents = do
       events <- S.pollEvents
-      pure (case events of
-              [] -> Yampa.NoEvent
-              _ -> Yampa.Event events)
+      pure $ Yampa.Event events
     -- Debug
     oneSecondTimer = do
       delta <- newMVar 0
