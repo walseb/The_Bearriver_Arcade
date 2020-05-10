@@ -7,12 +7,13 @@ import Control.Concurrent
     threadDelay,
   )
 import Data.Aeson
-import Data.ByteString as B
-import Data.ByteString.Lazy as BL
+import qualified Data.ByteString as B
+import qualified Data.ByteString.Lazy as BL
 import Data.String (fromString)
 import qualified FRP.Yampa as Yampa
 import Linear
 import qualified SDL as S
+import System.Directory (doesFileExist)
 
 frameCap :: Double
 frameCap = 1 / 200
@@ -29,25 +30,32 @@ initSDL windowName windowConfig = do
   renderer <- S.createRenderer window (-1) S.defaultRenderer
   pure (renderer, window)
 
-gameStateDir = "gameState"
+gameStateFile = "SaveGame"
 
 runSDL :: (FromJSON s, ToJSON s) => Bool -> S.WindowMode -> String -> (S.Renderer -> IO t) -> (Maybe s -> S.Renderer -> (p -> IO (Double, Maybe (Yampa.Event [S.Event]))) -> t -> IO s) -> IO ()
 runSDL debug windowMode windowName loadResources run = do
   (renderer, window) <- initSDL windowName windowMode
   resources <- loadResources renderer
   sense <- getSense
-  -- TODO Create file if there is none so error doesn't occur. Also error management. Lazy bytestring exception management
-  -- Load game state
-  loadedGameState <- eitherDecodeStrict <$> B.readFile gameStateDir
+
+  fileExist <- doesFileExist gameStateFile
+
+  loadedGameState <-
+    if fileExist
+      then eitherDecodeStrict <$> B.readFile gameStateFile
+      else pure (Left "No game state file")
+
   let loadedGameState' =
         case loadedGameState of
           Left err -> seq (Prelude.putStrLn ("Game state load error: " ++ err)) Nothing
           Right res -> Just res
+
   -- Run FRP network
   savedGameState <- run loadedGameState' renderer sense resources
+
   -- Save game state
-  let s = encode savedGameState
-  BL.writeFile gameStateDir s
+  BL.writeFile gameStateFile (encode savedGameState)
+
   S.destroyRenderer renderer
   S.destroyWindow window
   where

@@ -55,3 +55,4 @@ library
                 -- For hotloading
                 , aeson
                 , bytestring
+                , directory
