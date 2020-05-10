@@ -7,13 +7,16 @@ I have tried cleaning the code up a bit with everything I have learned since sta
 * The games
 ** Lunar lander
 ~Scroll~ to zoom
+
 ~Arrow keys~ to rotate the ship and fly forward
+
 This is a lunar lander clone, with a few visual issues, most probably caused by relying on SDL for rendering. Or maybe it's my fault I'm not entirely sure and haven't bother finding out because I'm trying to transition to use Vulkan for future projects.
 
 [[file:LunarLander.png]]
 
 ** Simple game 1
 ~Arrow keys~ to move
+
 This is just the one of simplest games you can make
 [[file:SimpleGame1.png]]
 
