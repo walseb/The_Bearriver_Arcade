@@ -14,6 +14,8 @@ This is a lunar lander clone, with a few visual issues, most probably caused by 
 
 [[file:LunarLander.png]]
 
+This game also has a few other secret games in it! This was the repository where it all begun, so if you look back through the commits you can find (hopefully) working builds of simpler games made using reflex, reactive banana and even a traditional game loop.
+
 ** Simple game 1
 ~Arrow keys~ to move
 
