@@ -1,5 +1,5 @@
 * The Bearriver Arcade
-A few simple games and a game engine (although more like a bunch of common utilities) with features such as frame rate controls, game state saving and loading (the game is saved on quit, this can be used for pseudo code hot-swapping), collision detection, a input manager, SDL rendering wrappers and more.
+A few simple games and a game engine (maybe less of an engine and more like a bunch of scattered systems) with features such as frame rate controls, game state saving and loading (the game is saved on quit, this can be used for pseudo code hot-swapping), collision detection, a input manager, SDL rendering wrappers and more.
 I also have more games I'm working on that will appear hear in time
 
 I have tried cleaning the code up a bit with everything I have learned since starting this but it might be a bit rough in a few places.
