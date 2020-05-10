@@ -1,0 +1,9 @@
+[submodule "FRPSimpleGame2"]
+	path = FRPSimpleGame2
+	url = https://github.com/walseb/FRPSimpleGame2
+[submodule "FRPLunarLander"]
+	path = FRPLunarLander
+	url = https://github.com/walseb/FRPLunarLander
+[submodule "FRPSimpleGame"]
+	path = FRPSimpleGame
+	url = https://github.com/walseb/FRPSimpleGame
