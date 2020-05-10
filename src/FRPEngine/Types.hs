@@ -33,13 +33,10 @@ makeLenses ''Obj
 
 -- V2 json instances
 instance (FromJSON a) => FromJSON (V2 a)
-
 instance (ToJSON a) => ToJSON (V2 a)
 
 instance (FromJSON a, FromJSON spriteSelect) => FromJSON (Obj a spriteSelect)
-
 instance (FromJSON a, FromJSON spriteSelect) => FromJSON (CollObj a spriteSelect)
 
 instance (ToJSON a, ToJSON spriteSelect) => ToJSON (Obj a spriteSelect)
-
 instance (ToJSON a, ToJSON spriteSelect) => ToJSON (CollObj a spriteSelect)

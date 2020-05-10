@@ -9,7 +9,7 @@ import FRPEngine.Collision.Util
 import FRPEngine.Types
 import GJK.Collision
 
--- TODO: Performance: Usually the first arg is the same a lot of this time, does ghc see this and stores the value of the first calculation on that?
+-- TODO: Performance: Usually the first arg is the same a lot of this time, does ghc see this and store the value of the first calculation on that?
 collidesObj :: (RealFloat a) => CollObj a b -> CollObj a b -> Bool
 collidesObj a b =
   collides' (getCollisionPointsPos a) (getCollisionPointsPos b)

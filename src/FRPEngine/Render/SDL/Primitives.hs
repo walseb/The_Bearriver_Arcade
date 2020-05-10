@@ -18,6 +18,7 @@ import qualified SDL.Font as F
 import SDL.Vect
 import SDL.Video.Renderer
 
+-- For now the screen resolution is just assumed. So on differently sized monitors this might be totally false resulting in stuff not being centered
 screenSize :: (Num a) => V2 a
 -- screenSize = V2 1280 720
 -- screenSize = V2 2560 1440
