@@ -45,4 +45,8 @@ SDL2_ttf
 #+end_example
 
 * Bugs
+** Supported resolutions
 Right now only 1080p monitors are supported. This is because I haven't bothered looking into the resolution change events SDL probably emits.
+
+** Closing the games
+The only way to close the games is by pressing escape. Again, I haven't bothered looking into how to receive close window events

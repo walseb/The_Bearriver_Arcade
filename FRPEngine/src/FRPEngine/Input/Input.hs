@@ -25,14 +25,14 @@ defaultKeybinds =
       -- (ButtonAxisState (V2 KeycodeB KeycodeO) (V2 False False)),
       _movement =
         DirectionalInput
-          -- (ButtonState KeycodeUp False)
-          -- (ButtonState KeycodeDown False)
-          -- (ButtonState KeycodeLeft False)
-          -- (ButtonState KeycodeRight False)
-          (ButtonState KeycodeM False 0)
-          (ButtonState KeycodeT False 0)
-          (ButtonState KeycodeS False 0)
-          (ButtonState KeycodeN False 0),
-      -- _quit = ButtonState KeycodeEscape False
-      _quit = ButtonState KeycodeQ False 0
+          (ButtonState KeycodeUp False 0)
+          (ButtonState KeycodeDown False 0)
+          (ButtonState KeycodeLeft False 0)
+          (ButtonState KeycodeRight False 0),
+          -- (ButtonState KeycodeM False 0)
+          -- (ButtonState KeycodeT False 0)
+          -- (ButtonState KeycodeS False 0)
+          -- (ButtonState KeycodeN False 0),
+      _quit = ButtonState KeycodeEscape False 0
+      -- _quit = ButtonState KeycodeQ False 0
     }
