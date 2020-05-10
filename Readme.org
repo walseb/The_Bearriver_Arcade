@@ -1,0 +1,48 @@
+* The Bearriver Arcade
+A few simple games and a game engine (although more like a bunch of common utilities) with features such as frame rate controls, game state saving and loading (the game is saved on quit, this can be used for pseudo code hot-swapping), collision detection, a input manager, SDL rendering wrappers and more.
+I also have more games I'm working on that will appear hear in time
+
+I have tried cleaning the code up a bit with everything I have learned since starting this but it might be a bit rough in a few places.
+
+* The games
+** Lunar lander
+~Scroll~ to zoom
+~Arrow keys~ to rotate the ship and fly forward
+This is a lunar lander clone, with a few visual issues, most probably caused by relying on SDL for rendering. Or maybe it's my fault I'm not entirely sure and haven't bother finding out because I'm trying to transition to use Vulkan for future projects.
+
+[[file:LunarLander.png]]
+
+** Simple game 1
+~Arrow keys~ to move
+This is just the one of simplest games you can make
+[[file:SimpleGame1.png]]
+
+** Simple game 2
+~Arrow keys~ to move
+
+This game is pretty interesting. If you go slow the player is pretty much a square:
+[[file:SimpleGame2-1.png]]
+
+But the faster you go the thinner the player gets:
+[[file:SimpleGame2-2.png]]
+
+* Installation
+This project contains git submodules. Clone it with ~git clone --recurse-submodules https://github.com/walseb/The_Bearriver_Arcade~
+
+** Run project
+1. Enter a directory for a game like ~FRPLunarLander~
+2. Run ~nix-shell~
+3. Run ~cabal run~
+
+If you don't want to run this under ~nix~, just get the dependencies listed in the ~shell.nix~ file. For lunar lander that would be:
+#+begin_example
+pkg-config
+cabal-install
+ghc
+SDL2
+SDL2_image
+SDL2_ttf
+#+end_example
+
+* Bugs
+Right now only 1080p monitors are supported. This is because I haven't bothered looking into the resolution change events SDL probably emits.
