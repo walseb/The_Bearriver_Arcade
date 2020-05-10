@@ -10,9 +10,12 @@ data KeyState
     ButtonState {_key :: !Keycode, _pressed :: !Bool, _prCount :: !Int}
   | ButtonAxisState {_keyVec :: !(V2 Keycode), _pressedVec :: !(V2 Bool)}
   | ScrollState {_scrollDist :: !Int}
+  -- Kinda ugly hack to allow events to be polled just like the rest of these keys
+  | CloseWindow {_close :: !Bool}
   deriving (Show)
 
 makeLenses ''KeyState
+
 makePrisms ''KeyState
 
 data DirectionalInput

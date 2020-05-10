@@ -5,7 +5,7 @@ import SDL
 data CustomEventPayload
   = -- SDL doesn't send a scroll stopped event, therefor we need to create our own
     SDLEvent {_payload :: EventPayload}
-    -- Meaning an even has been pressed and then released within the same frame. So it should be ignored except for binds that wait for a click
-    -- This can't be stacked so it's summed up when turning it into the input state
+    -- pr means "pressed then released" Meaning an event has been pressed and then released within the same frame. Without this that would result in nothing happening. So it shouldn't be used for stuff like movement because it doesn't matter if movement is pressed between frames, but for stuff like gun triggers this is pretty essential
+    -- The count is summed up when folding these events into the input state
   | EventPR {_prPayload :: EventPayload}
   deriving (Show)

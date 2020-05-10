@@ -33,6 +33,8 @@ defaultKeybinds =
           -- (ButtonState KeycodeT False 0)
           -- (ButtonState KeycodeS False 0)
           -- (ButtonState KeycodeN False 0),
-      _quit = ButtonState KeycodeEscape False 0
+
+      _quit = CloseWindow False
+      -- _quit = ButtonState KeycodeEscape False 0
       -- _quit = ButtonState KeycodeQ False 0
     }

@@ -30,6 +30,11 @@ replaceKeystate (ScrollState oldScroll) (SDLEvent (MouseWheelEvent (MouseWheelEv
   ScrollState $ oldScroll + fromIntegral (scrollDist ^. _y)
 replaceKeystate (ScrollState oldScroll) (SDLEvent (MouseWheelEvent (MouseWheelEventData _ _ scrollDist ScrollFlipped))) =
   ScrollState $ oldScroll + (- (fromIntegral (scrollDist ^. _y)))
+
+replaceKeystate a@(CloseWindow True) _ = a
+replaceKeystate (CloseWindow False) (SDLEvent (WindowClosedEvent _)) = CloseWindow True
+
+
 -- If keys aren't matched or unknown don't do anything to them
 replaceKeystate a _ = a
 
