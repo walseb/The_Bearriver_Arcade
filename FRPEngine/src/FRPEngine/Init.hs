@@ -24,9 +24,9 @@ frameMaxJump :: Double
 frameMaxJump = 1 / 60
 
 initSDL :: String -> S.WindowMode -> IO (S.Renderer, S.Window)
-initSDL windowName windowConfig = do
+initSDL windowName windowMode = do
   S.initializeAll
-  window <- S.createWindow (fromString windowName) (S.WindowConfig True False False windowConfig S.NoGraphicsContext S.Wherever False (V2 800 600) True)
+  window <- S.createWindow (fromString windowName) (S.WindowConfig True False False windowMode S.NoGraphicsContext S.Wherever True (V2 800 600) True)
   renderer <- S.createRenderer window (-1) S.defaultRenderer
   pure (renderer, window)
 
