@@ -50,4 +50,4 @@ SDL2_ttf
 
 * Bugs
 ** Supported resolutions
-Right now only 1080p monitors are supported. This is because I haven't bothered looking into the resolution change events SDL probably emits.
+Right now only 1080p monitors are correctly centered on the player. This is because I haven't bothered looking into the resolution change events SDL probably emits.
