@@ -110,9 +110,5 @@ runSDL debug windowMode windowName loadResources run = do
               False -> pure ()
             pure
               -- Prevent delta time from getting higher than frametime for 60 fps
-              ( case dt > frameMaxJump of
-                  True -> frameMaxJump
-                  False -> dt,
-                Just events
-              )
+              (min dt frameMaxJump, Just events)
       pure sense

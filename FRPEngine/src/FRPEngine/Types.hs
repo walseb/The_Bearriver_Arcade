@@ -1,3 +1,4 @@
+{-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TemplateHaskell #-}
 
@@ -5,9 +6,11 @@ module FRPEngine.Types where
 
 import Control.Lens
 import Data.Aeson
-import FRPEngine.Collision.Types
+import FRPEngine.Physics.Collision.Types
 import GHC.Generics
 import Linear
+
+type Number a = (RealFloat a, Epsilon a, Show a)
 
 data Obj a spriteSelect
   = Obj

@@ -82,8 +82,8 @@ renderObj camPos res zoomLevel renderer obj =
     camPos
 {-# INLINE renderObj #-}
 
-renderText renderer font text pos = do
-  fontSurface <- F.solid font (V4 255 255 255 255) (pack text)
+renderText renderer font text pos color = do
+  fontSurface <- F.solid font color (pack text)
   fontTex <- S.createTextureFromSurface renderer fontSurface
   -- Destroy the surface after the texture is created
   S.freeSurface fontSurface

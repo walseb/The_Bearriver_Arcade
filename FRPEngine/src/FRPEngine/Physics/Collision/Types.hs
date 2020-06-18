@@ -1,4 +1,4 @@
-module FRPEngine.Collision.Types where
+module FRPEngine.Physics.Collision.Types where
 
 import Linear (V2 (..))
 

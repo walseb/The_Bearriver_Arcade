@@ -1,14 +1,14 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module FRPEngine.Collision.Util where
+module FRPEngine.Physics.Collision.Util where
 
-import FRPEngine.Collision.Types
+import FRPEngine.Physics.Collision.Types
 import FRPEngine.Types
 import Linear
 
 -- Takes rad as rot
-rotateAroundAxis :: (RealFloat a) => a -> V2 a -> V2 a -> V2 a
+rotateAroundAxis :: (Number a) => a -> V2 a -> V2 a -> V2 a
 rotateAroundAxis 0 a _ =
   a
 rotateAroundAxis theta (V2 x y) (V2 xO yO) =
@@ -28,7 +28,7 @@ moveAlongAxis (V2 x y) dist theta =
     x1 = x + sin theta * dist
     y1 = y + cos theta * dist
 
-getCollisionPointsPos :: (RealFloat a) => CollObj a b -> [[Pt' a]]
+getCollisionPointsPos :: (Number a) => CollObj a b -> [[Pt' a]]
 getCollisionPointsPos (CollObj coll (Obj pos _ rot size _ rotCenter)) =
   (fmap . fmap) (\pt -> rotateAroundAxis (- (degToRad rot)) ((pos + (size * pt)) - centerOffset) pos) coll
   where

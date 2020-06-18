@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
-module FRPEngine.YampaUtils.Types
+module FRPEngine.Yampa.Types
   (
   )
 where

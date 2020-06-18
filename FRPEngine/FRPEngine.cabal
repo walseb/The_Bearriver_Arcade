@@ -14,21 +14,21 @@ library
     ghc-options: -w -Wmissing-home-modules
 
     other-modules:
-      FRPEngine.Collision.AABB
+      FRPEngine.Physics.Collision.AABB
 
-      FRPEngine.Collision.GJKInternal.Support
+      FRPEngine.Physics.Collision.GJKInternal.Support
       FRPEngine.Input.Internal.Types
-      FRPEngine.Input.Internal.UpdateInputstate
-      FRPEngine.Input.Internal.CustomEventConversion
+      FRPEngine.Input.Internal.UpdateKeys
+      FRPEngine.Input.Internal.CustomEventLift
 
     exposed-modules:
       FRPEngine.Types
-      FRPEngine.Physics
+      FRPEngine.Physics.Physics
       FRPEngine.Init
-      FRPEngine.Collision.Types
-      FRPEngine.Collision.GJK
-      FRPEngine.Collision.Util
-      FRPEngine.YampaUtils.Types
+      FRPEngine.Physics.Collision.Types
+      FRPEngine.Physics.Collision.GJK
+      FRPEngine.Physics.Collision.Util
+      FRPEngine.Yampa.Types
       FRPEngine.Input.Types
       FRPEngine.Input.Input
       FRPEngine.Input.Utils
