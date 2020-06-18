@@ -30,6 +30,11 @@ This game is pretty interesting. If you go slow the player is pretty much a squa
 But the faster you go the thinner the player gets:
 [[file:SimpleGame2-2.png]]
 
+** Simple game 3
+~Arrow keys~ to move
+
+This game is a lot like the last game, but with some new gameplay mechanics. It's not polished code-wise or gameplay-wise
+
 * Installation
 This project contains git submodules. Clone it with ~git clone --recurse-submodules https://github.com/walseb/The_Bearriver_Arcade~
 

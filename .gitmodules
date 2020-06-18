@@ -7,3 +7,6 @@
 [submodule "FRPSimpleGame"]
 	path = FRPSimpleGame
 	url = https://github.com/walseb/FRPSimpleGame
+[submodule "FRPSimpleGame3"]
+	path = FRPSimpleGame3
+	url = https://github.com/walseb/FRPSimpleGame3
