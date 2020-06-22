@@ -5,10 +5,12 @@ import FRPEngine.Input.Internal.CustomEventLift
 import FRPEngine.Input.Internal.UpdateKeys
 import FRPEngine.Input.Types
 import SDL
+import Control.DeepSeq
 
 updateInput :: [Input] -> [SDL.Event] -> [Input]
 updateInput inputState events =
-  foldr (flip updateKeys) keys' (liftCustomEvent events')
+  -- This needs to be deeply evaluated because otherwise thunks build up when keys aren't pressed
+  deepseq (foldr (flip updateKeys) keys' (liftCustomEvent events')) (foldr (flip updateKeys) keys' (liftCustomEvent events'))
   where
     keys' = flushKeys inputState
     events' = catMaybes $ (filterOutRepeatingEvents . eventPayload) <$> events

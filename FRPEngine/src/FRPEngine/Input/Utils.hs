@@ -14,11 +14,11 @@ vectorizeMovement
           (Btn _ a3)
         )
     ) =
-    V2
+    normalize (V2
       -- Horizontal
       (boolToInt a2 - boolToInt a3)
       -- Vertical
-      (boolToInt a1 - boolToInt a0)
+      (boolToInt a1 - boolToInt a0))
     where
       boolToInt :: (Number a) => Bool -> a
       boolToInt a = if a then 0 else 1

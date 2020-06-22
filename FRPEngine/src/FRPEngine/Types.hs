@@ -23,6 +23,8 @@ data Obj a spriteSelect
       }
   deriving (Generic, Show)
 
+makeLenses ''Obj
+
 data CollObj a spriteSelect
   = CollObj
       { _coll :: [[Pt' a]],
@@ -31,8 +33,6 @@ data CollObj a spriteSelect
   deriving (Generic, Show)
 
 makeLenses ''CollObj
-
-makeLenses ''Obj
 
 -- V2 json instances
 instance (FromJSON a) => FromJSON (V2 a)

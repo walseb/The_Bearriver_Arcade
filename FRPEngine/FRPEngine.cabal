@@ -39,6 +39,7 @@ library
                 , extra
                 , lens
                 , linear
+                , deepseq
 
                 , sdl2
                 , sdl2-ttf
